@@ -30,8 +30,8 @@ at: http://pisg.sourceforge.net/docs/
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/etc/pisg,%{_datadir}/pisg,%{_bindir}}
-cp pisg.cfg $RPM_BUILD_ROOT/etc/pisg
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/pisg,%{_datadir}/pisg,%{_bindir}}
+cp pisg.cfg $RPM_BUILD_ROOT%{_sysconfdir}/pisg
 cp -R gfx layout modules pisg lang.txt scripts $RPM_BUILD_ROOT%{_datadir}/pisg
 echo '%{_datadir}/pisg/pisg $@' > $RPM_BUILD_ROOT%{_bindir}/pisg
 
@@ -40,9 +40,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING README docs
-%dir /etc/pisg
-%config(noreplace) /etc/pisg/pisg.cfg
+%doc README docs
+%dir %{_sysconfdir}/pisg
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pisg/pisg.cfg
 %dir %{_datadir}/pisg
 %{_datadir}/pisg/gfx
 %{_datadir}/pisg/layout
