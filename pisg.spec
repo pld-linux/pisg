@@ -17,10 +17,9 @@ statistics from different logfile formats. It was originally written
 because IRCStats wasn't open source. So here's an open source/GPL'ed
 version to anyone interested. It's a funny thing for your IRC channel,
 and it's highly customizeable. Extensive documentation can be found
-at: http://pisg.sourceforge.net/docs/
+at: <http://pisg.sourceforge.net/docs/>.
 
 %description -l pl
--
 
 %prep
 %setup -q
@@ -33,7 +32,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/pisg,%{_datadir}/pisg,%{_bindir}}
 cp pisg.cfg $RPM_BUILD_ROOT%{_sysconfdir}/pisg
 cp -R gfx layout modules pisg lang.txt scripts $RPM_BUILD_ROOT%{_datadir}/pisg
-echo '%{_datadir}/pisg/pisg $@' > $RPM_BUILD_ROOT%{_bindir}/pisg
+cat <<'EOF' > $RPM_BUILD_ROOT%{_bindir}/pisg
+#!/bin/sh
+exec %{_datadir}/pisg/pisg "$@"
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
