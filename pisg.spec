@@ -34,7 +34,7 @@ dokumentacja znajduje siê na: <http://pisg.sourceforge.net/docs/>.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/pisg,%{_datadir}/pisg,%{_bindir}}
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install docs/pisg.1 $RPM_BUILD_ROOT%{_mandir}/man1
+mv -f docs/pisg.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install pisg.cfg $RPM_BUILD_ROOT%{_sysconfdir}/pisg
 cp -R gfx layout modules pisg lang.txt $RPM_BUILD_ROOT%{_datadir}/pisg
 cat <<'EOF' > $RPM_BUILD_ROOT%{_bindir}/pisg
