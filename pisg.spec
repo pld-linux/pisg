@@ -1,5 +1,5 @@
 Summary:	Perl script which generates statistics from IRC logfiles
-Summary(pl):	Skrypt perlowy generuj±cy statystyki z plików loguj±cych IRCa
+Summary(pl):	Skrypt perlowy generuj±cy statystyki z plików loguj±cych IRC-a
 Name:		pisg
 Version:	0.64
 Release:	0.9
@@ -13,17 +13,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 pisg is an IRC channel statics generator written in Perl, it creates
-statistics from different logfile formats. The supported logfile formats 
-is explained in the FORMATS file. It was originally written because IRCStats 
-wasn't open source. It's highly customizeable. Extensive documentation can 
-be found
-at: <http://pisg.sourceforge.net/docs/>.
+statistics from different logfile formats. The supported logfile
+formats is explained in the FORMATS file. It was originally written
+because IRCStats wasn't open source. It's highly customizeable.
+Extensive documentation can be found at:
+<http://pisg.sourceforge.net/docs/>.
 
 %description -l pl
-pisg jest napisanym w Perlu generatorem statystyk kana³u IRC. Tworzy je
-z ró¿nych formatów plików loguj±cych. Wspierane formaty s± obja¶nione w pliku
-FORMATS. Jest wysoko konfigurowalny. Obszerniejsza dokumentacja znajduje siê
-na: <http://pisg.sourceforge.net/docs/>.
+pisg jest napisanym w Perlu generatorem statystyk kana³u IRC. Tworzy
+je z ró¿nych formatów plików loguj±cych. Wspierane formaty s±
+obja¶nione w pliku FORMATS. Jest wysoko konfigurowalny. Obszerniejsza
+dokumentacja znajduje siê na: <http://pisg.sourceforge.net/docs/>.
 
 %prep
 %setup -q
