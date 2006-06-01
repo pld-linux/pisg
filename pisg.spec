@@ -1,12 +1,13 @@
 Summary:	Perl script which generates statistics from IRC logfiles
 Summary(pl):	Skrypt perlowy generuj±cy statystyki z plików loguj±cych IRC-a
 Name:		pisg
-Version:	0.66
+Version:	0.68
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://dl.sourceforge.net/pisg/%{name}-%{version}.tar.gz
-# Source0-md5:	3cc9d886b2abc8a84348830790f8dcb3
+Source0:	http://heanet.dl.sourceforge.net/sourceforge/pisg/%{name}-%{version}.tar.gz
+# Source0-md5:	97a5649cdf732fe9233f0cdcc550a174
+#Source0:	http://dl.sourceforge.net/pisg/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
 URL:		http://pisg.sourceforge.net/
 BuildArch:	noarch
