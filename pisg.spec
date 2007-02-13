@@ -1,5 +1,5 @@
 Summary:	Perl script which generates statistics from IRC logfiles
-Summary(pl.UTF-8):   Skrypt perlowy generujący statystyki z plików logujących IRC-a
+Summary(pl.UTF-8):	Skrypt perlowy generujący statystyki z plików logujących IRC-a
 Name:		pisg
 Version:	0.70
 Release:	1
