@@ -1,0 +1,19 @@
+--- pisg-0.72/lang.txt~	2008-02-13 22:40:25.000000000 +0200
++++ pisg-0.72/lang.txt	2008-12-18 23:16:03.674709582 +0200
+@@ -15,6 +15,7 @@
+ # (FR) French - Molator <molator@ifrance.com>
+ # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
+ #      last update: 2005-01-14 by Anonymous
++# (ET) Estonian
+ # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
+ # (NL_BE) Flemish - Tiniduske <tiniduske@telenet.be> (2004-10-15)
+ # (NL) Dutch - Jeroen van Nimwegen <jeroen.van.nimwegen@gmail.com> (2005-02-17)
+@@ -2244,7 +2245,7 @@
+ </lang>
+ 
+ ### Estonian
+-<lang name="EE" charset="iso-8859-1">
++<lang name="ET" charset="iso-8859-1">
+ mostop1 = "Kõige rohkem operaatori staatust jagas <b>[:nick]</b>, [:ops] korda."
+ mostop2 = "<b>[:nick]</b> ei tahtnud sitem olla ja andis [:ops] op-i."
+ mostop3 = "Imelik, aga kanalil [:channel] ei andnud keegi kellelegi op-i!"
