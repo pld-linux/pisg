@@ -2,12 +2,14 @@ Summary:	Perl script which generates statistics from IRC logfiles
 Summary(pl.UTF-8):	Skrypt perlowy generujący statystyki z plików logujących IRC-a
 Name:		pisg
 Version:	0.72
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/pisg/%{name}-%{version}.tar.gz
 # Source0-md5:	28ffff94b052ff8ba7621d7d8394b296
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-FHS.patch
+Patch2:		%{name}-lang.patch
 URL:		http://pisg.sourceforge.net/
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,33 +31,36 @@ dokumentacja znajduje się na: <http://pisg.sourceforge.net/docs/>.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+
 mv docs/pisg.1 .
+
+# cleanup backups after patching
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/pisg,%{_datadir}/pisg,%{_bindir}}
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install pisg.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install pisg.cfg $RPM_BUILD_ROOT%{_sysconfdir}/pisg
-cp -R gfx layout modules pisg lang.txt $RPM_BUILD_ROOT%{_datadir}/pisg
-cat <<'EOF' > $RPM_BUILD_ROOT%{_bindir}/pisg
-#!/bin/sh
-exec %{_datadir}/pisg/pisg "$@"
-EOF
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/pisg,%{_datadir}/pisg,%{_bindir},%{_mandir}/man1,%{perl_vendorlib}}
+cp -a pisg.1 $RPM_BUILD_ROOT%{_mandir}/man1
+cp -a pisg.cfg $RPM_BUILD_ROOT%{_sysconfdir}/pisg
+cp -a gfx layout lang.txt $RPM_BUILD_ROOT%{_datadir}/pisg
+cp -a modules/* $RPM_BUILD_ROOT%{perl_vendorlib}
+install pisg $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README docs scripts
+%doc README docs/* scripts
 %attr(755,root,root) %{_bindir}/pisg
 %dir %{_sysconfdir}/pisg
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pisg/pisg.cfg
+%{perl_vendorlib}/Pisg.pm
+%{perl_vendorlib}/Pisg
 %dir %{_datadir}/pisg
 %{_datadir}/pisg/gfx
 %{_datadir}/pisg/layout
-%{_datadir}/pisg/modules
-%attr(755,root,root) %{_datadir}/pisg/pisg
 %{_datadir}/pisg/lang.txt
-%{_mandir}/man1/pisg*
+%{_mandir}/man1/pisg.1*
