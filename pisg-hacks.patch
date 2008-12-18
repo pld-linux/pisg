@@ -1,0 +1,39 @@
+--- pisg-0.72/modules/Pisg.pm~	2008-12-18 23:53:44.000000000 +0200
++++ pisg-0.72/modules/Pisg.pm	2008-12-19 00:06:19.780514406 +0200
+@@ -29,7 +29,7 @@
+     my $self = {
+         override_cfg => $args{override_cfg},
+         use_configfile => $args{use_configfile},
+-        search_path => $args{search_path},
++        search_path => $args{search_path} || '/usr/share/pisg',
+         chans => [],
+         users => {},
+         cfg => {},
+@@ -217,7 +217,7 @@
+ 
+         statsdump => '',           # Debug option
+         modules_dir => '',         # set in get_cmdline_options
+-        cchannels => '',           # set in get_cmdline_options
++        cchannels => [],           # set in get_cmdline_options
+ 
+         version => "0.72",
+     };
+--- pisg-0.72/modules/Pisg/Parser/Logfile.pm~	2008-12-19 00:25:49.000000000 +0200
++++ pisg-0.72/modules/Pisg/Parser/Logfile.pm	2008-12-19 00:25:51.084291572 +0200
+@@ -69,7 +69,6 @@
+     my $format = shift;
+     $self->{parser} = undef;
+     eval <<_END;
+-use lib '$self->{cfg}->{modules_dir}';
+ use Pisg::Parser::Format::$format;
+ \$self->{parser} = new Pisg::Parser::Format::$format(
+     cfg => \$self->{cfg},
+@@ -168,6 +168,8 @@
+         close C;
+     }
+ 
++	$self->{cfg}->{lines} = \%lines if $self->{cfg}->{store_lines};
++
+     $self->_pick_random_lines(\%stats, \%lines);
+     _uniquify_nicks(\%stats);
+ 
