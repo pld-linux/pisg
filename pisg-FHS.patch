@@ -1,0 +1,20 @@
+--- pisg-0.72/pisg~	2008-02-13 22:40:25.000000000 +0200
++++ pisg-0.72/pisg	2008-12-18 23:49:05.560422441 +0200
+@@ -24,16 +24,7 @@
+ 
+ sub main
+ {
+-    my $script_dir = $0;
+-
+-    # If the script was executed as ./pisg - then we just remove
+-    # everything after the last slash, if it was executed as 'perl pisg'
+-    # we assume that we are executing in the current dir.
+-    if ($script_dir =~ m/\/[^\/]*$/) {
+-        $script_dir =~ s/\/[^\/]*$//;
+-    } else {
+-        $script_dir = ".";
+-    }
++    my $script_dir = '/usr/share/pisg';
+ 
+     if (!-t STDOUT) { # we are not writing to a terminal
+ 	push @ARGV, "--silent";
