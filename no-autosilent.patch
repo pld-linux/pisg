@@ -1,0 +1,14 @@
+--- pisg-0.72/pisg~	2009-09-14 14:45:19.000000000 +0300
++++ pisg-0.72/pisg	2009-09-14 14:46:20.641778357 +0300
+@@ -25,11 +25,6 @@
+ sub main
+ {
+     my $script_dir = '/usr/share/pisg';
+-
+-    if (!-t STDOUT) { # we are not writing to a terminal
+-	push @ARGV, "--silent";
+-    }
+-
+     my $cfg = get_cmdline_options($script_dir);
+     unshift(@INC, $cfg->{modules_dir});
+ 
